@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="A case study for a modern Next.js application built with Supabase and deployed on Vercel.">
+	<title>SEM App — Project Showcase</title>
+	<style>
+		:root { --ink:#f5f5f0; --muted:#a5a7a4; --line:#2b302f; --bg:#101312; --card:#171b19; --lime:#d9ff62; --blue:#87aefc; }
+		* { box-sizing:border-box; }
+		body { margin:0; color:var(--ink); background:var(--bg); font-family:Inter, ui-sans-serif, system-ui, -apple-system, sans-serif; line-height:1.5; }
+		a { color:inherit; text-decoration:none; }
+		.wrap { max-width:1160px; margin:auto; padding:0 28px; }
+		nav { height:78px; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; }
+		.brand { font-weight:800; letter-spacing:-.04em; font-size:1.05rem; }
+		.brand span { color:var(--lime); }
+		nav .links { display:flex; gap:27px; color:var(--muted); font-size:.88rem; }
+		nav .links a:hover { color:var(--ink); }
+		.hero { padding:112px 0 102px; border-bottom:1px solid var(--line); position:relative; overflow:hidden; }
+		.hero:after { content:""; position:absolute; width:470px; height:470px; border:1px solid #27302c; border-radius:50%; right:-130px; top:30px; box-shadow:0 0 0 55px #151a18, 0 0 0 56px #27302c, 0 0 0 112px #151a18, 0 0 0 113px #27302c; opacity:.7; }
+		.eyebrow { color:var(--lime); text-transform:uppercase; letter-spacing:.15em; font-size:.72rem; font-weight:700; margin-bottom:24px; }
+		h1 { font-size:clamp(3.4rem, 8vw, 7.7rem); line-height:.9; letter-spacing:-.085em; max-width:850px; margin:0 0 32px; position:relative; z-index:1; }
+		h1 em { color:var(--lime); font-style:normal; }
+		.intro { color:var(--muted); max-width:480px; font-size:1.1rem; margin:0; position:relative; z-index:1; }
+		.actions { margin-top:34px; display:flex; gap:13px; position:relative; z-index:1; }
+		.button { padding:12px 19px; border-radius:5px; font-weight:700; font-size:.88rem; border:1px solid var(--line); }
+		.primary { color:#111; background:var(--lime); border-color:var(--lime); }
+		.section { padding:88px 0; border-bottom:1px solid var(--line); }
+		.grid { display:grid; grid-template-columns:1fr 2fr; gap:60px; }
+		.label { color:var(--muted); font-size:.76rem; letter-spacing:.13em; text-transform:uppercase; font-weight:700; }
+		h2 { font-size:clamp(2rem,4vw,3.7rem); line-height:1; letter-spacing:-.06em; margin:12px 0 20px; }
+		.copy { color:var(--muted); max-width:620px; font-size:1.08rem; }
+		.product { margin-top:55px; border:1px solid var(--line); background:#0c0f0e; border-radius:10px; overflow:hidden; box-shadow:0 25px 70px #0005; }
+		.window { height:35px; display:flex; align-items:center; gap:6px; padding:0 14px; border-bottom:1px solid var(--line); background:#181d1b; }
+		.dot { width:8px; height:8px; border-radius:50%; background:#5e6762; }
+		.screen { min-height:370px; display:grid; grid-template-columns:150px 1fr; }
+		.side { border-right:1px solid var(--line); padding:24px 16px; color:#7e8781; font-size:.72rem; }
+		.side strong { display:block; color:var(--ink); font-size:1rem; margin-bottom:28px; }
+		.side div { margin:17px 0; }
+		.side .selected { color:var(--lime); }
+		.dashboard { padding:28px; background:linear-gradient(135deg,#141a17,#101311); }
+		.dash-title { display:flex; justify-content:space-between; align-items:center; margin-bottom:25px; font-weight:700; }
+		.badge { color:var(--lime); background:#35431e; padding:5px 9px; border-radius:20px; font-size:.65rem; }
+		.stats { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+		.stat { padding:18px; background:var(--card); border:1px solid var(--line); border-radius:5px; }
+		.stat small { color:var(--muted); display:block; font-size:.65rem; }
+		.stat b { font-size:1.45rem; display:block; margin-top:9px; }
+		.chart { height:140px; margin-top:13px; padding:20px; border:1px solid var(--line); border-radius:5px; background:var(--card); position:relative; }
+		.chart svg { width:100%; height:100%; }
+		.stack { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:32px; }
+		.tech { padding:24px; border:1px solid var(--line); border-radius:7px; background:var(--card); }
+		.tech b { display:block; margin-bottom:7px; font-size:1.05rem; }
+		.tech p { color:var(--muted); font-size:.88rem; margin:0; }
+		.closing { padding:95px 0 110px; text-align:center; }
+		.closing h2 { max-width:650px; margin:12px auto 28px; }
+		footer { padding:24px 0; color:var(--muted); font-size:.78rem; display:flex; justify-content:space-between; }
+		@media (max-width:700px) { nav .links { display:none; } .hero { padding:80px 0; } .grid { display:block; } .grid .label { margin-bottom:35px; } .screen { grid-template-columns:90px 1fr; } .side { padding:20px 10px; } .dashboard { padding:17px; } .stats { grid-template-columns:1fr; } .stack { grid-template-columns:1fr; } .hero:after { right:-300px; } footer { display:block; } footer span { display:block; margin-top:8px; } }
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<nav><a class="brand" href="../index.html">DREW<span>.</span></a><div class="links"><a href="#overview">Overview</a><a href="#stack">Stack</a><a href="#contact">Contact</a></div><a class="button primary" href="../index.html#contact">Let's talk ↗</a></nav>
+		<main>
+			<section class="hero"><div class="eyebrow">Selected project / 2024</div><h1>Make data feel <em>simple.</em></h1><p class="intro">SEM is a focused web app that turns everyday workflows into a clear, fast, and genuinely enjoyable experience.</p><div class="actions"><a class="button primary" href="#overview">Explore the build ↓</a><a class="button" href="https://vercel.com" target="_blank" rel="noreferrer">View deployment ↗</a></div></section>
+			<section class="section" id="overview"><div class="grid"><div><div class="label">01 / The idea</div></div><div><h2>A thoughtful tool for moving work forward.</h2><p class="copy">I designed and built SEM from the ground up as a full-stack Next.js application. The goal was to make complex information feel approachable: a considered interface, responsive interactions, and a foundation that can grow with its users.</p></div></div><div class="product"><div class="window"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div><div class="screen"><aside class="side"><strong>sem.</strong><div class="selected">Overview</div><div>Projects</div><div>Insights</div><div>Settings</div></aside><div class="dashboard"><div class="dash-title">Good morning, Drew <span class="badge">Live system</span></div><div class="stats"><div class="stat"><small>Active projects</small><b>24</b></div><div class="stat"><small>Completion rate</small><b>82%</b></div><div class="stat"><small>Hours saved</small><b>48.5</b></div></div><div class="chart"><svg viewBox="0 0 600 100" preserveAspectRatio="none"><path d="M0 82 C55 67, 70 80, 110 59 S180 70, 220 42 S275 62, 320 29 S370 48, 420 32 S485 48, 530 12 S570 25,600 3" fill="none" stroke="#d9ff62" stroke-width="3"/><path d="M0 82 C55 67, 70 80, 110 59 S180 70, 220 42 S275 62, 320 29 S370 48, 420 32 S485 48, 530 12 S570 25,600 3 V100 H0Z" fill="#d9ff62" opacity=".08"/></svg></div></div></div></div></section>
+			<section class="section" id="stack"><div class="grid"><div><div class="label">02 / The stack</div></div><div><h2>Modern tools, made to work together.</h2><p class="copy">Every technical choice supports the experience: a flexible frontend, secure data, and a deployment pipeline that stays out of the way.</p><div class="stack"><div class="tech"><b>Next.js</b><p>App Router and server-side rendering for a fast, scalable frontend.</p></div><div class="tech"><b>Supabase</b><p>Postgres database, authentication, and real-time data in one place.</p></div><div class="tech"><b>Vercel</b><p>Seamless CI/CD, preview deployments, and a globally fast edge.</p></div></div></div></div></section>
+			<section class="closing" id="contact"><div class="eyebrow">Have a project in mind?</div><h2>Let's build something clear, useful, and memorable.</h2><a class="button primary" href="mailto:hello@drewstert.com">Start a conversation ↗</a></section>
+		</main>
+		<footer><span>© 2024 Drew Tyler</span><span>Designed & built with intention.</span></footer>
+	</div>
+</body>
+</html>
