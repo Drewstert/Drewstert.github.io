@@ -20,24 +20,50 @@
     }
 
     header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 1rem 5vw;
       background: #ffffff;
       border-bottom: 1px solid #dfe5ee;
     }
 
-    h1 { margin: 0; font-size: 1.25rem; }
+    .container {
+      width: min(1400px, 92vw);
+      min-height: 4.5rem;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
 
-    .open-app {
-      color: #ffffff;
-      background: #2563eb;
+    .brand {
+      color: #172033;
+      font-size: 1.25rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    nav a {
+      color: #5c6678;
       border-radius: 0.5rem;
-      padding: 0.65rem 1rem;
+      padding: 0.65rem 0.9rem;
       text-decoration: none;
       font-weight: 600;
+    }
+
+    nav a:hover,
+    nav a:focus-visible {
+      color: #172033;
+      background: #e8edf5;
+    }
+
+    nav a[aria-current="page"] {
+      color: #ffffff;
+      background: #2563eb;
     }
 
     main {
@@ -59,8 +85,9 @@
     }
 
     @media (max-width: 600px) {
-      header { padding: 1rem 4vw; }
-      .open-app { padding: 0.55rem 0.75rem; font-size: 0.9rem; }
+      .container { width: 92vw; }
+      .brand { font-size: 1.05rem; }
+      nav a { padding: 0.55rem 0.65rem; font-size: 0.9rem; }
       main { width: 92vw; }
       .app-frame { min-height: 36rem; }
     }
@@ -68,8 +95,13 @@
 </head>
 <body>
   <header>
-    <h1>Andrew Tyler ePortfolio</h1>
-    <a class="open-app" href="https://senior-sem-app.vercel.app" target="_blank" rel="noopener noreferrer">Open in new tab</a>
+    <div class="container topbar">
+      <div class="brand">Andrew Tyler</div>
+      <nav aria-label="Primary navigation">
+        <a href="https://drewstert.github.io">Home</a>
+        <a href="semapp.html" aria-current="page">Senior Sem App</a>
+      </nav>
+    </div>
   </header>
 
   <main>
